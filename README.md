@@ -2,7 +2,7 @@
 ## childish
 
 
-To Do
+**To Do**
 1. make square (bright orange)
 	1. make curved line for the path of the square (similar color)
 	1. get square to follow the path
