@@ -24,7 +24,7 @@
 	- [ ] make wires 3D
 - [ ] use the z plane to make the wires "come at u"
 - [x] click on space bar to pause and unpause the shapes
-- [ ] click on shapes with mouse to change shape and randomize color
+- [x] click on shapes with mouse to change shape and randomize color
 - [x] adjust speed
 - [ ] drag mouse to adjust wires
 - [x] have shapes move at different speeds on different wires
@@ -34,9 +34,9 @@
 **Must Haves**
 - [x] heavy use of variables
 - [x] custom functions passing variables as parameter 
-- [ ] loops 
+- [x] loops 
 - [x] control structures 
-- [ ] math or random 
+- [x] math or random 
 - [x] some use of interaction or change over time 
 - [x] movement, change, variety 
 - [x] arrays
