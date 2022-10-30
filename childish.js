@@ -10,6 +10,7 @@ function setup(){
   let orangeWire;
   let greenWire;
   let blueWire;
+  let purpleWire;
 
   orangeWire = new Wire({x:0, y:450}, {x:100, y:600}, {x:200, y:150}, {x:350, y:400},
                         {x: 500, y:625}, {x:550, y:150}, {x:800,y:350}, color(255,123,22));
@@ -22,8 +23,12 @@ function setup(){
   blueWire = new Wire({x:0, y:50}, {x:150, y:0}, {x:50, y:400}, {x:400, y:200},
                       {x: 700, y:40}, {x:300, y:600}, {x:800, y:700}, color(35,101,255));
   blueWire.addShape(0.7, 0.002, color(0,64,255), "triangle");
+
+  purpleWire = new Wire({x:0, y:250}, {x:150, y:200}, {x:50, y:600}, {x:400, y:400},
+                      {x: 700, y:240}, {x:300, y:800}, {x:800, y:800}, color(166,1,255));
+  purpleWire.addShape(0.7, -0.006, color(123,0,185), "square");
   
-  wires.push(orangeWire, greenWire, blueWire);
+  wires.push(orangeWire, greenWire, blueWire, purpleWire);
 
 }
 
@@ -115,18 +120,28 @@ class Wire{
 
   }
 
+  faster(){
+    this.speed_ = this.speed_*2;
+  }
+
+  slower(){
+    this.speed_ = this.speed_*0.5;
+  }
+
 }
 
 function keyPressed(){
 
-  /*if(key == "-"){
-    speed = speed*0.3;
-    formerSpeed = speed;
+  if(key == "-"){
+    for(const wire of wires){
+      wire.slower();
+    }
   }
   if(key == "="){
-    speed = speed*2;
-    formerSpeed = speed;
-  }*/
+    for(const wire of wires){
+      wire.faster();
+    }
+  }
   if(key == " "){
     if(pause == true){
       pause = false;

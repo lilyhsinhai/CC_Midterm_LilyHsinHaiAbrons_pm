@@ -25,7 +25,7 @@
 - [ ] use the z plane to make the wires "come at u"
 - [x] click on space bar to pause and unpause the shapes
 - [ ] click on shapes with mouse to change shape and randomize color
-- [ ] adjust speed
+- [x] adjust speed
 - [ ] drag mouse to adjust wires
 - [x] have shapes move at different speeds on different wires
 - [ ] multiple shapes per wire (different speeds)
