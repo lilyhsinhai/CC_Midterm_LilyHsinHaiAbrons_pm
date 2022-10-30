@@ -22,8 +22,7 @@
 - [x] control structures 
 - [ ] math or random 
 - [ ] some use of interaction or change over time 
-- [ ] movement, change, variety 
-- [ ] arrays 
-- [ ] conditionals 
-- [ ] OOP - with methods + passing parameters 
-To give you an idea of how much development I'm looking for, your code should be well beyond 100 lines of code, which incorporates the concepts we've learned thus far. Spacing, comments or commented out code are not counted as lines.
+- [x] movement, change, variety 
+- [ ] arrays
+- [x] conditionals 
+- [x] OOP - with methods + passing parameters
