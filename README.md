@@ -37,8 +37,8 @@
 - [ ] loops 
 - [x] control structures 
 - [ ] math or random 
-- [ ] some use of interaction or change over time 
+- [x] some use of interaction or change over time 
 - [x] movement, change, variety 
-- [ ] arrays
+- [x] arrays
 - [x] conditionals 
 - [x] OOP - with methods + passing parameters

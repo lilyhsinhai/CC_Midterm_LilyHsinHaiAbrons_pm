@@ -1,11 +1,15 @@
-let orangeWire;
-let greenWire;
-let blueWire;
 let pause = false;
+
+const wires = [];
+
 
 function setup(){
   createCanvas(800,800);
   background(255,241,196);
+
+  let orangeWire;
+  let greenWire;
+  let blueWire;
 
   orangeWire = new Wire({x:0, y:450}, {x:100, y:600}, {x:200, y:150}, {x:350, y:400},
                         {x: 500, y:625}, {x:550, y:150}, {x:800,y:350}, color(255,123,22));
@@ -19,25 +23,19 @@ function setup(){
                       {x: 700, y:40}, {x:300, y:600}, {x:800, y:700}, color(35,101,255));
   blueWire.addShape(0.7, 0.002, color(0,64,255), "triangle");
   
+  wires.push(orangeWire, greenWire, blueWire);
+
 }
 
 function draw(){
   background(255,241,196);
-
-//TO DO: condense this
-
-  orangeWire.display();
-  orangeWire.move();
-  orangeWire.drawShape();
-
-  greenWire.display();
-  greenWire.move();
-  greenWire.drawShape();
-
-  blueWire.display();
-  blueWire.move();
-  blueWire.drawShape();
   
+  for(const wire of wires){
+    wire.display();
+    wire.move();
+    wire.drawShape();
+
+  }
 }
 
 class Wire{
