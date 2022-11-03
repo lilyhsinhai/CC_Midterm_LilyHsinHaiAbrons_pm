@@ -1,6 +1,6 @@
 new p5(); //https://github.com/processing/p5.js/wiki/p5.js-overview#why-cant-i-assign-variables-using-p5-functions-and-variables-before-setup
 
-let pause = false;
+let scenePause = false;
 
 const wires = [];
 
@@ -78,6 +78,7 @@ class Wire{
     this.speed_ = speed;
     this.shapeColor_ = shapeColor;
     this.shapeType_ = shapeType;
+    this.pause_ = false
 
   }
 
@@ -110,7 +111,7 @@ class Wire{
     this.x_ = x;
     this.y_ = y;
 
-    if(pause == false){
+    if(this.pause_ == false){
       this.pos_ += this.speed_
       if(this.pos_ >= 1|| this.pos_ <= 0.0){
         this.speed_ = -this.speed_;
@@ -149,11 +150,31 @@ class Wire{
     this.speed_ = this.speed_*0.5;
   }
 
-  mouseClicked(){
-    var d = dist(mouseX,mouseY, this.x_, this.y_);
+  shapeClicked(){
+    var d = dist(mouseX, mouseY, this.x_, this.y_);
     if(d < 30){
-      this.shapeColor_ = random(palette);  
+      this.shapeColor_ = random(palette);
     }
+  }
+
+  wireClicked(){
+    var d = dist(mouseX, mouseY, this.anchor1_.x, this.anchor1_.y);
+    if(d < 70){
+      if(this.pause_ == false){
+        this.pause_ = true;
+     }else{
+        this.pause_ = false;
+    }
+  }
+
+}
+
+  pause(){
+    this.pause_ = true;
+  }
+
+  resume(){
+    this.pause_ = false;
   }
 
 }
@@ -171,19 +192,27 @@ function keyPressed(){
     }
   }
   if(key == " "){
-    if(pause == true){
-      pause = false;
+    if(scenePause == true){
+      scenePause = false;
+      for(const wire of wires){
+      wire.pause();
+      }
     }else{
-      pause = true;
+      scenePause = true;
+      for(const wire of wires){
+      wire.resume();
+      }
     }
   }
 }
 
 function mousePressed(){
   for(const wire of wires){
-    wire.mouseClicked();
+    wire.shapeClicked();
   }
-
+  for(const wire of wires){
+    wire.wireClicked();
+  }
 }
 
 
