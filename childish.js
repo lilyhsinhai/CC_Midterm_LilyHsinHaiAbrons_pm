@@ -159,15 +159,26 @@ class Wire{
 
   wireClicked(){
     var d = dist(mouseX, mouseY, this.anchor1_.x, this.anchor1_.y);
-    if(d < 70){
+    if(d < 50){
       if(this.pause_ == false){
         this.pause_ = true;
      }else{
         this.pause_ = false;
     }
   }
-
 }
+
+  shapeDragged(){
+    var d = dist(mouseX, mouseY, this.x_, this.y_);
+    if(d < 30){
+      this.pause_ = true;
+      this.pos_ = mouseX/800;
+    }
+  }
+
+  setPos(pos){
+    this.pos_ = pos;
+  }
 
   pause(){
     this.pause_ = true;
@@ -212,6 +223,13 @@ function mousePressed(){
   }
   for(const wire of wires){
     wire.wireClicked();
+  }
+}
+
+function mouseDragged(){
+  for(const wire of wires){
+  //  wire.shapeDragged();
+    wire.setPos(mouseX/800);
   }
 }
 
