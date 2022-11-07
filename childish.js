@@ -49,7 +49,7 @@ function setup(){
   
   wires.push(orangeWire, greenWire, blueWire, purpleWire, redWire, yellowWire);
 
-  for(let i = 0; i <= 4000; i++){
+  for(let i = 0; i <= 6000; i++){
     let b = new Ball(random(800), random(800), random(palette));
     balls.push(b);
   }
@@ -88,6 +88,15 @@ class Ball{
     noStroke();
     ellipse(this.x, this.y, 30, 30);
 
+  }
+
+  ballClicked(){
+
+    var d = dist(mouseX, mouseY, this.x, this.y);
+      if(d < 100){
+        this.x = this.x + 50;
+        this.y = this.y + 50;
+      }
   }
 
 }
@@ -186,17 +195,17 @@ class Wire{
 
   shapeClicked(){
     var d = dist(mouseX, mouseY, this.x_, this.y_);
-    if(d < 30){
-      this.shapeColor_ = random(palette);
-    }
+      if(d < 30){
+        this.shapeColor_ = random(palette);
+      }
   }
 
   wireClicked(){
     var d = dist(mouseX, mouseY, this.anchor1_.x, this.anchor1_.y);
-    if(d < 50){
+     if(d < 50){
       if(this.pause_ == false){
         this.pause_ = true;
-     }else{
+      }else{
         this.pause_ = false;
     }
   }
@@ -258,11 +267,18 @@ function keyPressed(){
 }
 
 function mousePressed(){
-  for(const wire of wires){
-    wire.shapeClicked();
+  if(scene == 1){
+    for(const wire of wires){
+      wire.shapeClicked();
+    }
+    for(const wire of wires){
+      wire.wireClicked();
+    }
   }
-  for(const wire of wires){
-    wire.wireClicked();
+  if(scene == 2){
+    for(const ball of balls){
+      ball.ballClicked();
+    }
   }
 }
 
