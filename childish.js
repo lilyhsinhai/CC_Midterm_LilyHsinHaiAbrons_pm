@@ -2,6 +2,10 @@ new p5(); //https://github.com/processing/p5.js/wiki/p5.js-overview#why-cant-i-a
 
 let scenePause = false;
 
+let scene = 2;
+
+const balls = [];
+
 const wires = [];
 
 const palette = [color(255,95,0), color(56,148,56), color(0,64,255), color(123,0,185), color(209,10,0), color(255,206,1)];
@@ -45,17 +49,47 @@ function setup(){
   
   wires.push(orangeWire, greenWire, blueWire, purpleWire, redWire, yellowWire);
 
+  for(let i = 0; i <= 4000; i++){
+    let b = new Ball(random(800), random(800), random(palette));
+    balls.push(b);
+  }
 }
 
 function draw(){
   background(255,241,196);
   
-  for(const wire of wires){
-    wire.display();
-    wire.move();
-    wire.drawShape();
+  if(scene == 1){
+    for(const wire of wires){
+      wire.display();
+      wire.move();
+      wire.drawShape();
+    }
+  }
+  if(scene == 2){
+    for(const ball of balls){
+      ball.display();
+    }
+  }
+}
+
+class Ball{
+
+  constructor(x, y, ballColor){
+
+    this.x = x;
+    this.y = y;
+    this.ballColor = ballColor;
 
   }
+
+  display(){
+
+    fill(this.ballColor);
+    noStroke();
+    ellipse(this.x, this.y, 30, 30);
+
+  }
+
 }
 
 class Wire{
@@ -214,6 +248,12 @@ function keyPressed(){
       wire.resume();
       }
     }
+  }
+  if(key == "1"){
+    scene = 1;
+  }
+  if(key == "2"){
+    scene = 2;
   }
 }
 
