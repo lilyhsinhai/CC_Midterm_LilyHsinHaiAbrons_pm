@@ -92,11 +92,11 @@ class Ball{
 
   ballClicked(){
 
-    var d = dist(mouseX, mouseY, this.x, this.y);
-      if(d < 100){
-        this.x = this.x + 50;
-        this.y = this.y + 50;
-      }
+    //var d = dist(mouseX, mouseY, this.x, this.y);
+     // if(d < 500){
+        this.x += 25.0/(this.x - mouseX);
+        this.y += 25.0/(this.y - mouseY);
+      
   }
 
 }
