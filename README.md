@@ -26,7 +26,7 @@
 - [x] click on space bar to pause and unpause the shapes
 - [x] click on shapes with mouse to change shape and randomize color
 - [x] adjust speed
-- [ ] drag mouse to adjust wires
+- [x] drag mouse to adjust wires
 - [x] have shapes move at different speeds on different wires
 - [ ] multiple shapes per wire (different speeds)
 

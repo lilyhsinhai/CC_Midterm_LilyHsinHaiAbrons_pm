@@ -49,7 +49,7 @@ function setup(){
   
   wires.push(orangeWire, greenWire, blueWire, purpleWire, redWire, yellowWire);
 
-  for(let i = 0; i <= 6000; i++){
+  for(let i = 0; i <= 20000; i++){
     let b = new Ball(random(800), random(800), random(palette));
     balls.push(b);
   }
@@ -92,11 +92,20 @@ class Ball{
 
   ballClicked(){
 
-    //var d = dist(mouseX, mouseY, this.x, this.y);
-     // if(d < 500){
-        this.x += 25.0/(this.x - mouseX);
-        this.y += 25.0/(this.y - mouseY);
-      
+    const divisor = 2000.0
+    var d = dist(mouseX, mouseY, this.x, this.y);
+      if(d < 200){
+        if(this.x >= mouseX){
+          this.x += divisor/(d);
+        }else{
+        this.x += divisor/(-d);
+        }
+        if(this.y >= mouseY){
+          this.y += divisor/(d);
+        }else{
+          this.y += divisor/(-d);
+        }
+    }
   }
 
 }
@@ -277,14 +286,15 @@ function mousePressed(){
   }
   if(scene == 2){
     for(const ball of balls){
-      ball.ballClicked();
+      if(random() < 0.3){
+        ball.ballClicked();
+      }
     }
   }
 }
 
 function mouseDragged(){
   for(const wire of wires){
-  //  wire.shapeDragged();
     wire.setPos(mouseX/800);
   }
 }
