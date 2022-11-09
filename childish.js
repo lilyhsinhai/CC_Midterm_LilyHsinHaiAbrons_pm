@@ -4,7 +4,9 @@ let scenePause = false;
 
 let scene = 2;
 
-const balls = [];
+const lowerBalls = [];
+
+const upperBalls = []
 
 const wires = [];
 
@@ -49,9 +51,13 @@ function setup(){
   
   wires.push(orangeWire, greenWire, blueWire, purpleWire, redWire, yellowWire);
 
+  for(let i = 0; i <= 5000; i++){
+    let b = new Ball(random(800), random(800), random(palette));
+    lowerBalls.push(b);
+  }
   for(let i = 0; i <= 20000; i++){
     let b = new Ball(random(800), random(800), random(palette));
-    balls.push(b);
+    upperBalls.push(b);
   }
 }
 
@@ -66,7 +72,11 @@ function draw(){
     }
   }
   if(scene == 2){
-    for(const ball of balls){
+    for(const ball of lowerBalls){
+      ball.display();
+    }
+    for(const ball of upperBalls){
+      ball.move();
       ball.display();
     }
   }
@@ -76,9 +86,10 @@ class Ball{
 
   constructor(x, y, ballColor){
 
-    this.x = x;
-    this.y = y;
     this.ballColor = ballColor;
+    this.position = createVector(x, y);
+    this.velocity = createVector(0, 0);
+    this.deceleration = createVector (0.8, 0.8);
 
   }
 
@@ -86,25 +97,23 @@ class Ball{
 
     fill(this.ballColor);
     noStroke();
-    ellipse(this.x, this.y, 30, 30);
+    ellipse(this.position.x, this.position.y, 30, 30);
+
+  }
+
+  move(){
+
+    this.velocity.mult(this.deceleration);
+    this.position.add(this.velocity);
 
   }
 
   ballClicked(){
 
-    const divisor = 2000.0
-    var d = dist(mouseX, mouseY, this.x, this.y);
+    const divisor = random(2000, 8000);
+    var d = dist(mouseX, mouseY, this.position.x, this.position.y);
       if(d < 200){
-        if(this.x >= mouseX){
-          this.x += divisor/(d);
-        }else{
-        this.x += divisor/(-d);
-        }
-        if(this.y >= mouseY){
-          this.y += divisor/(d);
-        }else{
-          this.y += divisor/(-d);
-        }
+        this.velocity = createVector(random(-30,30), random(-30,30));
     }
   }
 
@@ -285,8 +294,8 @@ function mousePressed(){
     }
   }
   if(scene == 2){
-    for(const ball of balls){
-      if(random() < 0.3){
+    for(const ball of upperBalls){
+      if(random() < 0.5){
         ball.ballClicked();
       }
     }
