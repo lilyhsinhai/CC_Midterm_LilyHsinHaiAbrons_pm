@@ -19,16 +19,11 @@
 	- [x] get triangle to follow the path of the line
 
 - [x] make shapes bounce back and forth on their lines
-- [ ] make it 3D
-	- [ ] make shapes 3D
-	- [ ] make wires 3D
-- [ ] use the z plane to make the wires "come at u"
 - [x] click on space bar to pause and unpause the shapes
 - [x] click on shapes with mouse to change shape and randomize color
 - [x] adjust speed
 - [x] drag mouse to adjust wires
 - [x] have shapes move at different speeds on different wires
-- [ ] multiple shapes per wire (different speeds)
 
 
 **Must Haves**
